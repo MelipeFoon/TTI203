@@ -1,28 +1,32 @@
 import 'dart:io';
 import 'dart:math';
-enum Escolhas {Pedra, Papel, Tesoura}
+enum Escolhas {pedra, papel, tesoura}
 void main(){
   final random = new Random();
-  final opcoes = Escolhas.values;
+  var opcoes = [];
+  for(int i = 0; i < 3; i++){
+    Escolhas escolhas = Escolhas.values[i];
+    opcoes.add(escolhas.name);
+  }
   while (true){
     stdout.writeln("Escolher entre(Pedra, Papel, Tesoura ou Sair): ");
-    var jogador = stdin.readLineSync();
-    if(jogador == "Sair") break;
-      var computador = opcoes[random.nextInt(opcoes.length)];
+    var jogador = stdin.readLineSync()?.toLowerCase();
+    if(jogador == "sair") break;
+      var computador = opcoes[random.nextInt(opcoes.length)].toLowerCase();
     if(opcoes.contains(jogador)){
       print("$jogador x $computador");
       switch (jogador){
-        case "Pedra":
-          if(computador == "Pedra")print("Empate!");
-          else if(computador == "Papel")print("Perdeu!");
+        case "pedra":
+          if(computador == "pedra")print("Empate!");
+          else if(computador == "papel")print("Perdeu!");
           else print("Ganhou!");
-        case "Papel":
-          if(computador == "Papel")print("Empate!");
-          else if(computador == "Tesoura")print("Perdeu!");
+        case "papel":
+          if(computador == "papel")print("Empate!");
+          else if(computador == "tesoura")print("Perdeu!");
           else print("Ganhou!");
-        case "Tesoura":
-          if(computador == "Tesoura")print("Empate!");
-          else if(computador == "Pedra")print("Perdeu!");
+        case "tesoura":
+          if(computador == "tesoura")print("Empate!");
+          else if(computador == "pedra")print("Perdeu!");
           else print("Ganhou!");
       }
     }
