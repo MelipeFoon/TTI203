@@ -30,6 +30,6 @@ void main(){
           else print("Ganhou!");
       }
     }
-    else print("Opção inválida \n$jogador\n$computador\n$opcoes");
+    else print("Opção inválida \n");
   }
 }
